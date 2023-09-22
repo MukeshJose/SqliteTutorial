@@ -2,6 +2,7 @@ package com.adersh.kumar.sqlitetutorial;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     // creating variables for our edittext, button and dbhandler
     private EditText courseNameEdt, courseTracksEdt, courseDurationEdt, courseDescriptionEdt;
-    private Button addCourseBtn;
+    private Button addCourseBtn, viewCourseBtn;
     private DBHandler dbHandler;
 
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         courseDurationEdt = findViewById(R.id.idEdtCourseDuration);
         courseDescriptionEdt = findViewById(R.id.idEdtCourseDescription);
         addCourseBtn = findViewById(R.id.idBtnAddCourse);
+        viewCourseBtn = findViewById(R.id.idBtnViewCourse);
 
         // creating a new dbhandler class
         // and passing our context to it.
@@ -62,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        viewCourseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ViewCourses.class));
+            }
+        });
     }
 }
